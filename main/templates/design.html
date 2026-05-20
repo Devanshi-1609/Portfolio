@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Designs | {{ profile.name }}
+    </title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet"
+        href="{% static 'css/animations.css' %}">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="container">
+
+            <nav class="navbar">
+
+                <!-- LOGO -->
+                <div class="logo">
+
+                    {{ profile.name }}
+
+                </div>
+
+                <!-- NAVIGATION -->
+                <div class="nav-links">
+
+                    <a href="/">
+                        Home
+                    </a>
+
+                    <a href="/about/">
+                        About
+                    </a>
+
+                    <a href="/projects/">
+                        Projects
+                    </a>
+
+                    <a href="/designs/">
+                        Designs
+
+                    </a>
+
+                    <a href="/contact/">
+                        Contact
+                    </a>
+
+                </div>
+
+                <!-- MENU -->
+                <div class="menu-toggle">
+
+                    <i class="fas fa-bars"></i>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- DESIGN SECTION -->
+    <section class="section design-section">
+
+        <div class="container">
+
+            <!-- TITLE -->
+            <div class="section-title">
+
+                <h2 class="animate-fade-in">
+
+                    Graphic Design Showcase
+
+                </h2>
+
+                <p class="animate-fade-in delay-1">
+
+                    Visual stories crafted with creativity & aesthetics
+
+                </p>
+
+            </div>
+
+            <!-- DESIGN GRID -->
+            <div class="design-grid">
+
+                {% for design in designs %}
+
+                <div class="design-card animate-slide-up">
+
+                    <!-- IMAGE -->
+                    <div class="design-image">
+
+                        <img src="{{ design.image.url }}"
+                            alt="{{ design.title }}">
+
+                    </div>
+
+                    <!-- CONTENT -->
+                    <div class="design-content">
+
+                        <!-- TITLE -->
+                        <h3>
+
+                            {{ design.title }}
+
+                        </h3>
+
+                        <!-- DESCRIPTION -->
+                        <p>
+
+                            {{ design.description }}
+
+                        </p>
+
+                        <!-- TAGS -->
+                        <div class="design-tags">
+
+                            {% for tool in design.tools_used.split %}
+
+                            <span class="design-tag">
+
+                                {{ tool }}
+
+                            </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section text-center animate-fade-in delay-3"
+                style="margin-top: 60px;">
+
+                <p
+                    style="color: #e9d5ff; font-size: 1.2rem; margin-bottom: 20px;">
+
+                    Interested in my creative work?
+
+                </p>
+
+                <a href="/contact/"
+                    class="btn btn-primary">
+
+                    Let's Collaborate
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <!-- ABOUT -->
+                <div class="footer-about animate-fade-in">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        {{ profile.name }}
+
+                    </h3>
+
+                    <p>
+
+                        {{ profile.footer_description }}
+
+                    </p>
+
+                </div>
+
+                <!-- LINKS -->
+                <div class="footer-links animate-fade-in delay-1">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Quick Links
+
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/about/">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/projects/">
+                                Projects
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/designs/"
+                            class="active">
+                                Designs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/contact/">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- SOCIAL -->
+                <div class="footer-contact animate-fade-in delay-2">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Connect
+
+                    </h3>
+
+                    <div class="social-links">
+
+                        <a href="{{ profile.github }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Github">
+
+                            <i class="fab fa-github"></i>
+
+                        </a>
+
+                        <a href="{{ profile.linkedin }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="LinkedIn">
+
+                            <i class="fab fa-linkedin-in"></i>
+
+                        </a>
+
+                        <a href="{{ profile.instagram }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Instagram">
+
+                            <i class="fab fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+                    <p class="email-link"
+                        style="margin-top: 15px;">
+
+                        <a href="mailto:{{ profile.email }}">
+
+                            {{ profile.email }}
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="copyright animate-fade-in delay-3">
+
+                <p>
+
+                    &copy; 2026 {{ profile.name }}.
+                    Designed with passion.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="{% static 'js/animations.js' %}"></script>
+
+</body>
+
+</html>

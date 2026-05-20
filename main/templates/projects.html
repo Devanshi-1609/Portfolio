@@ -1,0 +1,360 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        Projects | {{ profile.name }}
+    </title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet"
+        href="{% static 'css/styles.css' %}" />
+
+    <link rel="stylesheet"
+        href="{% static 'css/animations.css' %}" />
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="container">
+
+            <nav class="navbar">
+
+                <div class="logo">
+
+                    {{ profile.name }}
+
+                </div>
+
+                <div class="nav-links">
+
+                    <a href="/">
+                        Home
+                    </a>
+
+                    <a href="/about/">
+                        About
+                    </a>
+
+                    <a href="/projects/"
+                        class="active">
+
+                        Projects
+
+                    </a>
+
+                    <a href="/designs/">
+                        Designs
+                    </a>
+
+                    <a href="/contact/">
+                        Contact
+                    </a>
+
+                </div>
+
+                <div class="menu-toggle">
+
+                    <i class="fas fa-bars"></i>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <br />
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2 class="animate-fade-in">
+
+                    My Projects
+
+                </h2>
+
+                <p class="animate-fade-in delay-1">
+
+                    Where creativity meets functionality
+
+                </p>
+
+            </div>
+
+            <!-- PROJECT GRID -->
+            <div class="projects-grid">
+
+                {% for project in projects %}
+
+                <div class="project-card animate-slide-up">
+
+                    <!-- IMAGE -->
+                    <div class="project-image">
+
+                        <img src="{{ project.image.url }}"
+                            alt="{{ project.title }}"
+                            style="width: 100%; height: 250px; object-fit: cover;" />
+
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="project-info">
+
+                        <!-- TITLE -->
+                        <h3>
+
+                            {{ project.title }}
+
+                        </h3>
+
+                        <!-- DESCRIPTION -->
+                        <p>
+
+                            {{ project.description }}
+
+                        </p>
+
+                        <!-- TECHNOLOGIES -->
+                        <div class="project-tags">
+
+                            {% for tech in project.technologies.split %}
+
+                            <span class="project-tag">
+
+                                {{ tech }}
+
+                            </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- BUTTONS -->
+                        <div class="project-links"
+                            style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+
+                            {% if project.live_demo %}
+
+                            <a href="{{ project.live_demo }}"
+                                target="_blank"
+                                class="btn btn-small btn-primary">
+
+                                Live Demo
+
+                            </a>
+
+                            {% endif %}
+
+                            {% if project.source_code %}
+
+                            <a href="{{ project.source_code }}"
+                                target="_blank"
+                                class="btn btn-small btn-outline">
+
+                                Source Code
+
+                            </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section text-center animate-fade-in delay-3"
+                style="margin-top: 50px;">
+
+                <p
+                    style="color: #e9d5ff; font-size: 1.2rem; margin-bottom: 20px;">
+
+                    Want to see more of my work?
+
+                </p>
+
+                <a href="/contact/"
+                    class="btn btn-primary">
+
+                    Let's Build Something
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <!-- ABOUT -->
+                <div class="footer-about animate-fade-in">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        {{ profile.name }}
+
+                    </h3>
+
+                    <p>
+
+                        {{ profile.footer_description }}
+
+                    </p>
+
+                </div>
+
+                <!-- LINKS -->
+                <div class="footer-links animate-fade-in delay-1">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Quick Links
+
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/about/">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/projects/">
+                                Projects
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/designs/">
+                                Designs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/contact/">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- SOCIAL -->
+                <div class="footer-contact animate-fade-in delay-2">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Connect
+
+                    </h3>
+
+                    <div class="social-links">
+
+                        <a href="{{ profile.github }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Github">
+
+                            <i class="fab fa-github"></i>
+
+                        </a>
+
+                        <a href="{{ profile.linkedin }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="LinkedIn">
+
+                            <i class="fab fa-linkedin-in"></i>
+
+                        </a>
+
+                        <a href="{{ profile.instagram }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Instagram">
+
+                            <i class="fab fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+                    <p class="email-link"
+                        style="margin-top: 15px;">
+
+                        <a href="mailto:{{ profile.email }}">
+
+                            {{ profile.email }}
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="copyright animate-fade-in delay-3">
+
+                <p>
+
+                    &copy; 2026 {{ profile.name }}.
+                    Designed with passion.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="{% static 'js/animations.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description"
+        content="About {{ profile.name }} - UI/UX Designer & Frontend Developer" />
+
+    <title>
+        About | {{ profile.name }}
+    </title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet"
+        href="{% static 'css/styles.css' %}" />
+
+    <link rel="stylesheet"
+        href="{% static 'css/animations.css' %}" />
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="container">
+
+            <nav class="navbar">
+
+                <div class="logo">
+
+                    {{ profile.name }}
+
+                </div>
+
+                <div class="nav-links">
+
+                    <a href="/">
+                        Home
+                    </a>
+
+                    <a href="/about/"
+                        class="active">
+
+                        About
+
+                    </a>
+
+                    <a href="/projects/">
+                        Projects
+                    </a>
+
+                    <a href="/designs/">
+                        Designs
+                    </a>
+
+                    <a href="/contact/">
+                        Contact
+                    </a>
+
+                </div>
+
+                <div class="menu-toggle">
+
+                    <i class="fas fa-bars"></i>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <br />
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2 class="animate-fade-in">
+
+                    About Me
+
+                </h2>
+
+                <p class="animate-fade-in delay-1">
+
+                    Computer Engineer | Full Stack Developer | Graphic Designer
+
+                </p>
+
+            </div>
+
+            <div class="about-content">
+
+                <!-- IMAGE -->
+                <div class="about-image animate-slide-left">
+
+                    <img src="{{ profile.about_image.url }}"
+                        alt="{{ profile.name }} - Designer" />
+
+                </div>
+
+                <!-- ABOUT TEXT -->
+                <div class="about-text animate-slide-right">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Who am I?
+
+                    </h3>
+
+                    <p>
+
+                        {{ profile.short_bio }}
+
+                    </p>
+
+                    <!-- SKILLS -->
+                    <div class="skills">
+
+                        <h3
+                            style="color: #e9d5ff; margin-top: 30px; margin-bottom: 20px;">
+
+                            Technical Proficiencies
+
+                        </h3>
+
+                        {% for skill in skills %}
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+
+                                <span>
+
+                                    {{ skill.name }}
+
+                                </span>
+
+                                <span>
+
+                                    {{ skill.percentage }}%
+
+                                </span>
+
+                            </div>
+
+                            <div class="skill-bar">
+
+                                <div class="skill-progress"
+                                    data-width="{{ skill.percentage }}%">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="section experience-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2 class="animate-fade-in">
+
+                    Milestones
+
+                </h2>
+
+                <p class="animate-fade-in delay-1">
+
+                    Key achievements in my design journey
+
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                {% for milestone in milestones %}
+
+                <div class="timeline-item animate-slide-up">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+
+                        {{ milestone.date }}
+
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>
+
+                            {{ milestone.title }}
+
+                        </h3>
+
+                        <h4 style="color: var(--primary);">
+
+                            {{ milestone.subtitle }}
+
+                        </h4>
+
+                        <p>
+
+                            {{ milestone.description }}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <!-- ABOUT -->
+                <div class="footer-about animate-fade-in">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        {{ profile.name }}
+
+                    </h3>
+
+                    <p>
+
+                        {{ profile.footer_description }}
+
+                    </p>
+
+                </div>
+
+                <!-- LINKS -->
+                <div class="footer-links animate-fade-in delay-1">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Quick Links
+
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/about/">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/projects/">
+                                Projects
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/designs/">
+                                Designs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/contact/">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- SOCIAL -->
+                <div class="footer-contact animate-fade-in delay-2">
+
+                    <h3 style="color: #e9d5ff;">
+
+                        Connect
+
+                    </h3>
+
+                    <div class="social-links">
+
+                        <a href="{{ profile.github }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Github">
+
+                            <i class="fab fa-github"></i>
+
+                        </a>
+
+                        <a href="{{ profile.linkedin }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="LinkedIn">
+
+                            <i class="fab fa-linkedin-in"></i>
+
+                        </a>
+
+                        <a href="{{ profile.instagram }}"
+                            target="_blank"
+                            class="social-link"
+                            aria-label="Instagram">
+
+                            <i class="fab fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+                    <p class="email-link"
+                        style="margin-top: 15px;">
+
+                        <a href="mailto:{{ profile.email }}">
+
+                            {{ profile.email }}
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="copyright animate-fade-in delay-3">
+
+                <p>
+
+                    &copy; 2026 {{ profile.name }}.
+                    Designed with passion.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script src="{% static 'js/animations.js' %}"></script>
+
+</body>
+
+</html>
